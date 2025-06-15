@@ -1,4 +1,9 @@
 {
+  "name": "zpi-zp41_appWEB3",
+  "private": true,
+  "version": "0.0.0",
+  "homepage": "https://yuhryshchenko.github.io/zpi-zp41_appWEB3_HryshchenkoYuliia_KPI_2025/dist/",
+  "type": "module",
   "dependencies": {
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
@@ -6,8 +11,13 @@
     "vite": "^6.3.5"
   },
   "scripts": {
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
