@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makets</title>
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f9f9f9;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        .container {
+          width: 80%;
+          margin-top: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          background-color: #fff;
+          overflow: hidden;
+        }
+    
+        .tabs {
+          display: flex;
+          border-bottom: 1px solid #ccc;
+        }
+    
+        .tab {
+          padding: 10px 20px;
+          cursor: pointer;
+          flex: 1;
+          text-align: center;
+          border-right: 1px solid #ccc;
+          transition: background-color 0.3s;
+        }
+    
+        .tab:last-child {
+          border-right: none;
+        }
+    
+        .tab.active {
+          background-color: #ffcccc;
+          font-weight: bold;
+        }
+    
+        .content {
+          display: none;
+          padding: 20px;
+        }
+    
+        .content.active {
+          display: block;
+        }
+    
+        .layout-container {
+          display: flex;
+          flex-direction: column;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          padding: 20px;
+          background-color: #fdfdfd;
+        }
+
+        .header {
+            background-color: #ffcccc;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }        
+
+        .main-content {
+            padding: 10px;
+        }
+    
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+    
+        .data-table th, .data-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+    
+        .data-table th {
+            background-color: #f2f2f2;
+        }
+    
+        .example-image {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #maket1 .main-maket-content {
+            width: 78%;
+            float: right;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #maket1 .header {
+            background-color: #004080;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #maket1 .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        #maket1 .sidebar {
+            background-color: #f2f2f2;
+            padding: 15px;
+            width: 22%;
+            float: left;
+            box-sizing: border-box;
+            height: 100vh;
+        }
+
+        #maket1 .sidebar h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        #maket1 .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #maket1 .sidebar ul li {
+            margin: 5px 0;
+        }
+
+        #maket1 .sidebar ul li a {
+            color: #004080;
+            text-decoration: none;
+        }
+
+        #maket1 .carousel {
+            margin-bottom: 30px;
+        }
+
+        #maket1 .carousel h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #maket1 .carousel-inner {
+            display: flex;
+            overflow: hidden;
+        }
+
+        #maket1 .item {
+            min-width: 120px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        #maket1 .item img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            background-color: white;
+            width: 100px;
+            height: 150px;
+        }
+
+        #maket1 button.prev, button.next {
+            background-color: #004080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #maket1 button.prev:hover, button.next:hover {
+            background-color: #0066cc;
+        }
+
+        #maket1 .footer {
+            clear: both;
+            padding: 10px;
+            text-align: center;
+            background-color: #004080;
+            color: white;
+            margin-top: 20px;
+        }
+    
+        #maket2 body {
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        #maket3 body {
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        #maket2 table {
+            width: 300px;
+            height: 400px;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-weight: 600;
+            background-color: white;
+            border: 2px solid #616161;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #maket3 table {
+            width: 30%;
+            height: 400px;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-weight: 600;
+            background-color: white;
+            border: 2px solid #616161;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #maket2 td {
+            border: 2px solid #616161;
+            text-align: center;
+        }
+
+        #maket3 td {
+            border: 2px solid #616161;
+            text-align: center;
+        }
+
+        #maket2 .rectangle {
+            background-color: white;
+            margin: 10px;
+            height: 50%;
+            border: 2px solid #616161;
+        }
+
+        #maket3 .rectangle {
+            background-color: white;
+            margin: auto;
+            width: 80%;
+            height: 50%;
+            border: 2px solid #616161;
+        }
+
+        #maket2 .table-header {
+            background-color: #F7CE46;
+            height: 50px;
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        #maket3 .table-header {
+            background-color: #F7CE46;
+            height: 10%;
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        #maket2 .footer {
+            background-color: #F7CE46;
+            height: 50px;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        #maket3 .footer {
+            background-color: #F7CE46;
+            height: 10%;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        #maket2 .white {
+            width: 20px;
+        }
+
+        #maket3 .white {
+            width: 20%;
+        }
+
+        #maket2 .blue {
+            background-color: #4065F6;
+            width: 20px;
+        }
+
+        #maket3 .blue {
+            background-color: #4065F6;
+            width: 20%;
+        }
+
+        #maket2 .red {
+            background-color: #EC5E57;
+            width: 20px;
+        }
+
+        #maket3 .red {
+            background-color: #EC5E57;
+            width: 20%;
+        }
+
+        #maket2 .spacing {
+            width: 2px;
+            background-color: transparent;
+        }
+
+        #maket3 .spacing {
+            width: 2%;
+            background-color: transparent;
+        }
+
+        #maket2 .header .text {
+            text-align: center;
+            flex: 3;
+        }
+
+        #maket3 .header .text {
+            text-align: center;
+            flex: 3;
+        }
+
+        #maket4 .header .text {
+            text-align: center;
+            flex: 3;
+        }
+
+        #maket5 .header .text {
+            text-align: center;
+            flex: 3;
+        }
+
+        #maket6 .header .text {
+            text-align: center;
+            flex: 3;
+        }
+
+        #maket2 h1, h2, h3 {
+            margin: 5px 0;
+        }
+
+        #maket3 h1, h2, h3 {
+            margin: 5px 0;
+        }
+
+        #maket4 h1, h2, h3 {
+            margin: 5px 0;
+        }
+
+        #maket5 h1, h2, h3 {
+            margin: 5px 0;
+        }
+
+        #maket6 h1, h2 {
+            margin: 5px 0;
+        }
+
+        #maket2 h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        #maket3 h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        #maket4 h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        #maket5 h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        #maket6 h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        #maket2 h2 {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        #maket3 h2 {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        #maket4 h2 {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        #maket5 h2 {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        #maket6 h2 {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        #maket2 h3 {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        #maket3 h3 {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        #maket4 h3 {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        #maket5 h3 {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .fixed-container {
+            width: 500px;
+            margin: 0 auto;
+            border: 2px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .fixed-container .block {
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .fixed-container .block1 {
+            width: 100%;
+            background-color: blue;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .fixed-container .block3 {
+            width: 100%;
+            overflow: auto;
+            background-color: blue;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .fixed-container .block2 {
+            width: 20%;
+            float: left;
+            background-color: orange;
+            color: black;
+        }
+
+        .fixed-container .block5 {
+            width: 20%;
+            float: left;
+            background-color: orange;
+            color: black;
+        }
+
+        .fixed-container .block4 {
+            width: 60%;
+            float: left;
+            background-color: white;
+            color: black;
+        }
+
+        .fixed-container .clear {
+            clear: both;
+        }
+
+         .fluid-container {
+            width: 90%;
+            margin: 0 auto;
+            border: 2px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .fluid-container .block {
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .fluid-container .block1 {
+            width: 100%;
+            background-color: blue;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .fluid-container .block3 {
+            width: 100%;
+            background-color: blue;
+            overflow: auto;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .fluid-container .block2 {
+            width: 20%;
+            float: left;
+            background-color: orange;
+            color: black;
+        }
+
+        .fluid-container .block5 {
+            width: 20%;
+            float: left;
+            background-color: orange;
+            color: black;
+        }
+
+        .fluid-container .block4 {
+            width: 60%;
+            float: left;
+            background-color: white;
+            color: black;
+        }
+
+        .fluid-container .clear {
+            clear: both;
+        }
+
+        #maket6 body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1;
+            color: #000;
+        }
+
+        #maket6 *, ::before, ::after {
+            box-sizing: border-box;
+        }
+
+        #maket6 .bg_black {
+            background-color: #282828;
+        }
+
+        #maket6 .wrapper {
+            display: grid;
+            max-width: 1600px;
+            padding: 0 30px;
+            margin: 0 auto;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        #maket6 img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #maket6 .center {
+            text-align: center;
+        }
+
+        #maket6 .white {
+            color: #ffffff;
+        }
+
+        #maket6 .orange {
+            color: #ff9638;
+        }
+
+        #maket6 .h2_heading {
+            font-size: 30px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 36px;
+        }
+
+        #maket6 .h3_heading {
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 26px;
+        }
+
+        #maket6 .methods_left {
+            width: 49%;
+            float: left;
+        }
+
+        #maket6 .methods_right {
+            width: 49%;
+            float: right;
+        }
+
+        #maket6 .methods_right .button {
+            color: #292929;
+            max-width: 315px;
+            margin-top: 100px;
+        }
+
+        #maket6 a:visited {
+            text-decoration: none;
+        }
+
+        #maket6 .methods_description p {
+            font-weight: 300;
+            text-align: justify;
+            margin-bottom: 20px;
+            margin-top: 0px;
+        }
+
+        #maket6 .methods_description {
+            color: #fff;
+        }
+
+        #maket6 .paragraph {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+        }
+        
+        #maket6 .methods_description ul li {
+            position: relative;
+            padding-left: 30px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        #maket6 .methods_description ul li::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            background: #3298F2;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+
+        #maket6 ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #maket6 li {
+            list-style: none;
+        }
+
+        #maket6 .button {
+            position: relative;
+            border-radius: 6px;
+            padding: 22px 0;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: all .3s;
+            overflow: hidden;
+            min-width: 250px;
+            max-width: 400px;
+            cursor: pointer;
+            border: none;
+        }
+
+        #maket6 .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #maket6 .bg_yellow {
+            background-color: #FFD43D;
+        }
+
+        #maket6 #direction {
+            padding-top: 40px;
+            padding-bottom: 50px;
+        }
+
+        #maket6 .direction_slider .swiper-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: 40px;
+        }
+
+        #maket6 .direction_item {
+            position: relative;
+            border: 1px solid #9DC6EA;
+            border-radius: 20px;
+            padding-top: 53px;
+            transition: .3s;
+            margin-top: 25px;
+        }
+
+        #maket6 .direction_item__icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+        }
+
+        #maket6 .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box;
+        }
+
+        #maket6 .direction_item__title {
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 1.2;
+            text-align: center;
+            text-transform: uppercase;
+            color: #3298F2;
+            margin-bottom: 37px;
+        }
+
+        #maket6 .direction_item a:hover {
+            background-color: #3298F2;
+        }
+
+        #maket6 .direction_item a {
+            display: block;
+            background-color: #E6EDF3;
+            font-weight: 700;
+            color: #000;
+            border-radius: 0 0 20px 20px;
+            padding: 20px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: .3s;
+            text-decoration: none;
+        }
+
+        
+        
+      </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="tabs">
+        <div class="tab active" data-target="maket1">Макет № 1</div>
+        <div class="tab" data-target="maket2">Макет № 2</div>
+        <div class="tab" data-target="maket3">Макет № 3</div>
+        <div class="tab" data-target="maket4">Макет № 4</div>
+        <div class="tab" data-target="maket5">Макет № 5</div>
+        <div class="tab" data-target="maket6">Макет № 6</div>
+        </div>
+
+        <div id="maket1" class="content active">
+            <div class="layout-container">
+                
+                <!-- Header Section -->
+                <header class="header">
+                    <div class="logo">Library</div>
+                    <nav class="navbar">
+                    <a href="#">Search</a>
+                    <a href="#">Didn't Find It?</a>
+                    <a href="#">My Account</a>
+                    <a href="#">Library Info</a>
+                    <a href="#">Library Services</a>
+                    <a href="#">Help</a>
+                    </nav>
+                </header>
+
+                <main class="main-content">
+
+                    <!-- Sidebar Section -->
+                    <aside class="sidebar">
+                        <h3>What to Read?</h3>
+                        <ul>
+                        <li><a href="#">Find Your Next Book</a></li>
+                        <li><a href="#">My Perfect Read</a></li>
+                        <li><a href="#">Novelist</a></li>
+                        </ul>
+                        <h3>eBooks / Audio / eMagazines</h3>
+                        <ul>
+                        <li><a href="#">eBooks</a></li>
+                        <li><a href="#">eAudio</a></li>
+                        <li><a href="#">eMagazines</a></li>
+                        </ul>
+                    </aside>
+
+                    <!-- Content Section -->
+                    <section class="main-maket-content">
+                        <div class="carousel">
+                            <h2>Becoming your best self</h2>
+                            <div class="carousel-inner" id="carousel-1">
+                                <div class="item active">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780593714744/SC.GIF&client=fcplpol&upc=&oclc=1407025971" alt="Book 1">
+                                    <p>Job therapy : finding work that works for you</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781956867619/SC.GIF&client=fcplpol&upc=&oclc=1393184037" alt="Book 2">
+                                    <p>It's okay not to be fabulous every day!</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780593731086/SC.GIF&client=fcplpol&upc=&oclc=1408727143" alt="Book 3">
+                                    <p>Lessons for living : what only adversity can teach you</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781401967680/SC.GIF&client=fcplpol&upc=&oclc=1289921280" alt="Book 4">
+                                    <p>Be the calm or be the storm : leadership lessons from a woman at the helm</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780593655955/SC.GIF&client=fcplpol&upc=&oclc=1380997871" alt="Book 5">
+                                    <p>Be useful : seven tools for life</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780593599709/SC.GIF&client=fcplpol&upc=&oclc=1418891348" alt="Book 6">
+                                    <p>Not too late : the power of pushing limits at any age</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781454954422/SC.GIF&client=fcplpol&upc=&oclc=1406407921" alt="Book 7">
+                                    <p>If you live to 100, you might as well be happy : essays on ordinary joy</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780593653197/SC.GIF&client=fcplpol&upc=&oclc=1379221231" alt="Book 8">
+                                    <p>Music and mind : harnessing the arts for health and wellness</p>
+                                </div>
+                            </div>
+                            <button class="prev" data-carousel="carousel-1">&#8249;</button>
+                            <button class="next" data-carousel="carousel-1">&#8250;</button>
+                        </div>
+                        <hr style="color: aliceblue">
+                
+                        <div class="carousel">
+                        <h2>Scifi and fantasy</h2>
+                            <div class="carousel-inner" id="carousel-2">
+                                <div class="item active">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780373211722/SC.GIF&client=fcplpol&upc=&oclc=900032675" alt="Book 9">
+                                    <p>Legacy of kings</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781945994135/SC.GIF&client=fcplpol&upc=&oclc=" alt="Book 10">
+                                    <p>Mr. Baley</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781542681049/SC.GIF&client=fcplpol&upc=&oclc=1381178810" alt="Book 11">
+                                    <p>Our inner alien</p>
+                                </div>
+                                <div class="item active">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781948279000/SC.GIF&client=fcplpol&upc=&oclc=" alt="Book 12">
+                                    <p>World One</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781732814219/SC.GIF&client=fcplpol&upc=&oclc=" alt="Book 13">
+                                    <p>Racing the suns</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9798350914795/SC.GIF&client=fcplpol&upc=&oclc=1397553377" alt="Book 14">
+                                    <p>To kill a clone</p>
+                                </div>
+                                <div class="item active">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9781543950557/SC.GIF&client=fcplpol&upc=&oclc=1083183187" alt="Book 15">
+                                    <p>Strxia : the odds are against us</p>
+                                </div>
+                                <div class="item">
+                                    <img src="https://secure.syndetics.com/index.aspx?isbn=9780765381606/SC.GIF&client=fcplpol&upc=&oclc=1015965531" alt="Book 16">
+                                    <p>Count to infinity</p>
+                                </div>
+                            </div>
+                            <button class="prev" data-carousel="carousel-2">&#8249;</button>
+                            <button class="next" data-carousel="carousel-2">&#8250;</button>
+                        </div>
+
+                    </section>
+                </main>
+
+                <!-- Footer Section -->
+                <footer class="footer">
+                    © 2024 Library Catalog
+                </footer>
+
+                <script>
+                    // JavaScript for Carousel
+                    document.querySelectorAll('.prev, .next').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const carousel = document.getElementById(button.dataset.carousel);
+                        const items = carousel.querySelectorAll('.item');
+                        const activeItem = carousel.querySelector('.item.active');
+                        const activeIndex = Array.from(items).indexOf(activeItem);
+
+                        activeItem.classList.remove('active');
+                        if (button.classList.contains('prev')) {
+                        const prevIndex = (activeIndex - 1 + items.length) % items.length;
+                        items[prevIndex].classList.add('active');
+                        } else {
+                        const nextIndex = (activeIndex + 1) % items.length;
+                        items[nextIndex].classList.add('active');
+                        }
+                    });
+                    });
+                </script>
+                
+            </div>
+        </div>
+
+        <div id="maket2" class="content">
+        <div class="layout-container">
+
+            <header class="header">
+            <div class="text">
+                <h1>Лабораторна робота № 2.1</h1>
+                <h2>Завдання № 2, Варіант № 6</h2>
+                <h3>Фіксована таблична верстка</h3>
+            </div>
+            </header>
+        
+            <main class="main-content">
+                <table>
+                    <tr>
+                        <th colspan="3" class="table-header">
+                            <div class="rectangle"></div>
+                        </th>
+                        <th colspan="4" class="table-header">1</th>
+                    </tr>
+                    <tr class="row">
+                        <td class="blue">2</td>
+                        <td class="spacing"></td>
+                        <td class="red">3</td>
+                        <td class="spacing"></td>
+                        <td class="white">4</td>
+                        <td class="spacing"></td>
+                        <td class="red">5</td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" class="footer">6</td>
+                    </tr>
+                </table> 
+            </main>  
+        </div>
+        </div>
+
+        <div id="maket3" class="content">
+        <div class="layout-container">
+
+            <header class="header">
+            <div class="text">
+                <h1>Лабораторна робота № 2.1</h1>
+                <h2>Завдання № 2, Варіант № 6</h2>
+                <h3>Гумова таблична верстка</h3>
+            </div>
+            </header>
+
+            <main class="main-content">
+            <table>
+                <tr>
+                    <th colspan="3" class="table-header">
+                        <div class="rectangle"></div>
+                    </th>
+                    <th colspan="4" class="table-header">1</th>
+                </tr>
+                <tr class="row">
+                    <td class="blue">2</td>
+                    <td class="spacing"></td>
+                    <td class="red">3</td>
+                    <td class="spacing"></td>
+                    <td class="white">4</td>
+                    <td class="spacing"></td>
+                    <td class="red">5</td>
+                </tr>
+                <tr>
+                    <td colspan="7" class="footer">6</td>
+                </tr>
+            </table> 
+            </main>
+        </div>
+        </div>
+
+        <div id="maket4" class="content">
+        <div class="layout-container">
+            <header class="header">
+                <div class="text">
+                    <h1>Лабораторна робота № 2.1</h1>
+                    <h2>Завдання № 2, Варіант № 7</h2>
+                    <h3>Фіксована блокова верстка</h3>
+                </div>
+            </header>
+            <main class="main-content">
+                <div class="fixed-container">
+                    <div class="block block1">1</div>
+                    <div class="block block2">2</div>
+                    <div class="block block4">4</div>
+                    <div class="block block5">5</div>
+                    <div class="clear"></div>
+                    <div class="block block3">3</div>
+                </div>
+            </main>
+        </div>
+        </div>
+
+        <div id="maket5" class="content">
+        <div class="layout-container">
+            <header class="header">
+                <div class="text">
+                    <h1>Лабораторна робота № 2.1</h1>
+                    <h2>Завдання № 2, Варіант № 7</h2>
+                    <h3>Гумова блокова верстка</h3>
+                </div>
+            </header>
+            <main class="main-content">
+                <div class="fluid-container">
+                    <div class="block block1">1</div>
+                    <div class="block block2">2</div>
+                    <div class="block block4">4</div>
+                    <div class="block block5">5</div>
+                    <div class="block block3">3</div>
+                    <div class="clear"></div>
+                </div>
+            </main>
+        </div>
+        </div>
+
+        <div id="maket6" class="content">
+        <div class="layout-container">
+            <header class="header">
+                <div class="text">
+                    <h1>Лабораторна робота № 2.1</h1>
+                    <h2>Завдання № 3, Варіант № 6</h2>
+                </div>
+            </header>
+            <main class="main-content">
+
+                <section id="methods" class="bg_black">
+                    <div class="wrapper">
+                        <div class="h3_heading center white">Ефективні методи навчання</div>
+                            <h3 class="h2_heading center orange">100% засвоєння матеріалу</h3>
+                        <div class="methods_grid">
+                            <div class="methods_left">
+                                <div class="methods_description paragraph">
+                                    <p>Починаючи з 2016 року, ми відточували наші методи навчання і знайшли найбільш дієвий спосіб, який дає можливість студентам опановувати програму краще і в більшому об’ємі.</p>
+                                    <ul>
+                                    <li>Лекційний матеріал подається окремо. Це дає змогу зосередитись на ознайомленні з ним, не відволікаючись на виконання будь-яких дій.</li>
+                                    <li>Практичні заняття проходять в окремі дні та включають завдання по попередній лекції. При цьому частина завдань не містить абстрактних умов. Це дає змогу чітко закріпити пройдений матеріал. Але є завдання, які змусять вас розвиватись, оскільки будуть вже більш абстрактними, і їх виконання буде залежати від вашої уяви.</li>
+                                    <li>Як результат поєднання попередніх факторів ви опануєте теоретичну частину, закріпите її на практиці у двох різновидах завдань.</li>
+                                    </ul>
+                                </div>
+                            </div>    
+                            <div class="methods_right">
+                                <div class="methods_right_item">
+                                    <img src="https://i.ytimg.com/vi/SUUKIvxkOIE/maxresdefault.jpg" alt="Ігор курс  javascript complex відгук oktenweb">
+                                </div>
+                                <a href="https://owu.com.ua/vidguky" class="button bg_yellow flex-center">всі відгуки</a>
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+
+                <section id="direction">
+                    <div class="wrapper">
+                        <div class="h3_heading center blue" style="color: #3298f2">Наші курси програмування</div>
+                        <h3 class="h2_heading center">Обери напрямок програмування</h3>        
+                        <div class="direction_slider swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">                    
+                                    <div class="direction_item">
+                                        <img class="direction_item__icon" src="https://owu.com.ua/wp-content/uploads/2023/12/java.svg" alt="Icons Java">
+                                        <div class="direction_item__title">java<br>complex</div>
+                                        <a href="https://owu.com.ua/kurs-java">Детальніше</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">                    
+                                    <div class="direction_item">
+                                        <img class="direction_item__icon" src="https://owu.com.ua/wp-content/uploads/2023/12/js.svg" alt="Icons JavaScript">
+                                        <div class="direction_item__title">javascript<br>complex</div>
+                                        <a href="https://owu.com.ua/kurs-javascript">Детальніше</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">                    
+                                    <div class="direction_item">
+                                        <img class="direction_item__icon" src="https://owu.com.ua/wp-content/uploads/2023/12/python.svg" alt="Icons Python">
+                                        <div class="direction_item__title">python<br>complex</div>
+                                        <a href="https://owu.com.ua/kurs-python">Детальніше</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">                    
+                                    <div class="direction_item">
+                                        <img class="direction_item__icon" src="https://owu.com.ua/wp-content/uploads/2023/12/qa.svg" alt="Icons QA/QC">
+                                        <div class="direction_item__title">qa/qc<br>тестування</div>
+                                        <a href="https://owu.com.ua/kurs-testuvannya-qa-qc">Детальніше</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="partners_about" style="background-color:#9dc6ea4b">
+                    <div class="wrapper">
+                        <div class="methods_grid">
+                            <div class="methods_left">
+                                <img class="all_item_reviews__picture lazyloaded" data-src="https://i.ytimg.com/vi/KsPLJ7TRRgY/hqdefault.jpg" alt="Loonars" src="https://i.ytimg.com/vi/KsPLJ7TRRgY/hqdefault.jpg">
+                            </div>
+                            <div class="methods_right" style="padding-top: 50px;">
+                                <div class="partners_about__grid">
+                                    <div class="h3_heading center orange" style="color: #000">Роботодавці задоволені</div>
+                                    <h3 class="h2_heading center" style="color:#3298F2 ;">Нашими випускниками</h3>
+                                    <picture>
+                                        <source srcset="https://owu.com.ua/wp-content/themes/owu/image/brand/webp/mobile.webp" media="(max-width: 480px)">
+                                        <source data-srcset="https://owu.com.ua/wp-content/themes/owu/image/root_webp/all.webp" type="image/webp" srcset="https://owu.com.ua/wp-content/themes/owu/image/root_webp/all.webp">
+                                        <img class="reviews_image ls-is-cached lazyloaded" data-src="https://owu.com.ua/wp-content/themes/owu/image/brand/all.png" alt="Brand" src="https://owu.com.ua/wp-content/themes/owu/image/brand/all.png">
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </main>
+        </div>
+        </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Деактивація всіх вкладок і контентів
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Активація вибраної вкладки і контенту
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+  </script>
+    
+</body>
+
+</html>
